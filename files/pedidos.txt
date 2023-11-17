@@ -1,0 +1,7 @@
+P;Primeiro pedido do dia;true;elberth moraes;12323434599;elberth@moraes.com
+B;cafe;10;12345;false;200;cafe do bao;
+B;cerveja;20;23456;true;500;beeeer;
+P;Segund pedido do dia;true;maria moraes;12323434599;elberth@moraes.com
+B;cafe 2;10;12345;false;200;cafe do bao;
+B;cerveja 3;20;23456;true;500;beeeer;
+B;suco 4;10;12345;false;200;cafe do bao;

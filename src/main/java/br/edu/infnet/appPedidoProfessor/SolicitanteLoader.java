@@ -2,19 +2,22 @@ package br.edu.infnet.appPedidoProfessor;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appPedidoProfessor.model.domain.Solicitante;
+import br.edu.infnet.appPedidoProfessor.model.service.SolicitanteService;
 
+@Order(1)
 @Component
 public class SolicitanteLoader implements ApplicationRunner {
 	
-	private Map<String, Solicitante> mapa = new HashMap<String, Solicitante>();
+	@Autowired
+	private SolicitanteService solicitanteService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -34,12 +37,12 @@ public class SolicitanteLoader implements ApplicationRunner {
 			solicitante.setCpf(campos[1]);
 			solicitante.setEmail(campos[2]);
 			
-			mapa.put(solicitante.getCpf(), solicitante);
+			solicitanteService.incluir(solicitante);
 			
 			linha = leitura.readLine();
 		}
 
-		for(Solicitante solicitante : mapa.values()) {
+		for(Solicitante solicitante : solicitanteService.obterLista()) {
 			System.out.println("[SOLICITANTE] " + solicitante);			
 		}
 				

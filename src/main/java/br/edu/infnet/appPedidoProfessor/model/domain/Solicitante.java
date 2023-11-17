@@ -9,7 +9,9 @@ public class Solicitante {
 	@Override
 	public String toString() {
 
-		return String.format("nome (%s) - cpf (%s) - email (%s)", nome, cpf, email);
+		return String.format("nome (%s) - cpf (%s) - email (%s)", 
+				nome, cpf, email
+			);
 	}
 
 	public Solicitante() {
