@@ -1,5 +1,8 @@
 package br.edu.infnet.appPedidoProfessor.model.domain;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Sobremesa extends Produto {
 
 	private int quantidade;

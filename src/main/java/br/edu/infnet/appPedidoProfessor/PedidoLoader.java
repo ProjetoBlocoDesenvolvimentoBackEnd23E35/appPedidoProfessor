@@ -12,12 +12,14 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appPedidoProfessor.model.domain.Bebida;
+import br.edu.infnet.appPedidoProfessor.model.domain.Comida;
 import br.edu.infnet.appPedidoProfessor.model.domain.Pedido;
 import br.edu.infnet.appPedidoProfessor.model.domain.Produto;
+import br.edu.infnet.appPedidoProfessor.model.domain.Sobremesa;
 import br.edu.infnet.appPedidoProfessor.model.domain.Solicitante;
 import br.edu.infnet.appPedidoProfessor.model.service.PedidoService;
 
-@Order(2)
+@Order(5)
 @Component
 public class PedidoLoader implements ApplicationRunner {
 	
@@ -65,6 +67,33 @@ public class PedidoLoader implements ApplicationRunner {
 				
 				break;
 				
+			case "C":
+				Comida comida = new Comida();
+				comida.setNome(campos[1]);
+				comida.setValor(Float.valueOf(campos[2]));
+				comida.setCodigo(Integer.valueOf(campos[3]));
+				comida.setIngredientes(campos[4]);
+				comida.setPeso(Float.valueOf(campos[5]));
+				comida.setVegana(Boolean.valueOf(campos[6]));
+
+				pedido.getProdutos().add(comida);
+				
+				break;
+
+			case "S":
+				Sobremesa sobremesa = new Sobremesa();
+				sobremesa.setNome(campos[1]);
+				sobremesa.setValor(Float.valueOf(campos[2]));
+				sobremesa.setCodigo(Integer.valueOf(campos[3]));
+				sobremesa.setQuantidade(Integer.valueOf(campos[4]));
+				sobremesa.setDoce(Boolean.valueOf(campos[5]));
+				sobremesa.setInformacao(campos[6]);
+				
+				pedido.getProdutos().add(sobremesa);
+
+				
+				break;
+
 			default:
 				break;
 			}

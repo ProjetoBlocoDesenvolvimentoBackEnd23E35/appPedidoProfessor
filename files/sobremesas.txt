@@ -1,0 +1,2 @@
+doce de chocolate;10;98765;1;true;chocolate amargo
+cocada;15;87665;2;false;cocada rei

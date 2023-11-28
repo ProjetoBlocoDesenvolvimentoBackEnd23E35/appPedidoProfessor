@@ -1,5 +1,8 @@
 package br.edu.infnet.appPedidoProfessor.model.domain;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Bebida extends Produto {
 
 	private boolean gelada;
