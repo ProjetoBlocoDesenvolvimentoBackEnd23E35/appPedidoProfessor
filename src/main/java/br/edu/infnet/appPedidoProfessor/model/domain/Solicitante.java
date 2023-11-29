@@ -29,6 +29,10 @@ public class Solicitante {
 	public Solicitante() {
 	}
 	
+	public Solicitante(Integer id) {
+		this.id = id;
+	}
+	
 	public Solicitante(String nome, String cpf, String email) {
 		this.nome = nome;
 		this.cpf = cpf;

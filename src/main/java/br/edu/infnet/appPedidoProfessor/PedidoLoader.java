@@ -43,38 +43,27 @@ public class PedidoLoader implements ApplicationRunner {
 			
 			switch (campos[0]) {
 			case "P":
+								
 				pedido = new Pedido();
 				pedido.setDescricao(campos[1]);
 				pedido.setWeb(Boolean.valueOf(campos[2]));
 				pedido.setData(LocalDateTime.now());
-				pedido.setSolicitante(new Solicitante(campos[3], campos[4], campos[5]));
+				pedido.setSolicitante(new Solicitante(Integer.valueOf(campos[3])));
 				pedido.setProdutos(new ArrayList<Produto>());
-				
-				pedidoService.incluir(pedido);
-				
+								
 				break;
 
 			case "B":
 				Bebida bebida = new Bebida();
-				bebida.setNome(campos[1]);
-				bebida.setValor(Float.valueOf(campos[2]));
-				bebida.setCodigo(Integer.valueOf(campos[3]));
-				bebida.setGelada(Boolean.valueOf(campos[4]));
-				bebida.setTamanho(Float.valueOf(campos[5]));
-				bebida.setMarca(campos[5]);
-				
+				bebida.setId(Integer.valueOf(campos[1]));
+
 				pedido.getProdutos().add(bebida);
 				
 				break;
 				
 			case "C":
 				Comida comida = new Comida();
-				comida.setNome(campos[1]);
-				comida.setValor(Float.valueOf(campos[2]));
-				comida.setCodigo(Integer.valueOf(campos[3]));
-				comida.setIngredientes(campos[4]);
-				comida.setPeso(Float.valueOf(campos[5]));
-				comida.setVegana(Boolean.valueOf(campos[6]));
+				comida.setId(Integer.valueOf(campos[1]));
 
 				pedido.getProdutos().add(comida);
 				
@@ -82,15 +71,9 @@ public class PedidoLoader implements ApplicationRunner {
 
 			case "S":
 				Sobremesa sobremesa = new Sobremesa();
-				sobremesa.setNome(campos[1]);
-				sobremesa.setValor(Float.valueOf(campos[2]));
-				sobremesa.setCodigo(Integer.valueOf(campos[3]));
-				sobremesa.setQuantidade(Integer.valueOf(campos[4]));
-				sobremesa.setDoce(Boolean.valueOf(campos[5]));
-				sobremesa.setInformacao(campos[6]);
+				sobremesa.setId(Integer.valueOf(campos[1]));
 				
 				pedido.getProdutos().add(sobremesa);
-
 				
 				break;
 
@@ -100,6 +83,9 @@ public class PedidoLoader implements ApplicationRunner {
 
 			linha = leitura.readLine();
 		}
+		
+		pedidoService.incluir(pedido);
+		
 		
 		for(Pedido p : pedidoService.obterLista()) {
 			System.out.println("[PEDIDO] " + p);			

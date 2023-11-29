@@ -3,11 +3,15 @@ package br.edu.infnet.appPedidoProfessor.model.domain;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Pedido {
@@ -19,18 +23,20 @@ public class Pedido {
 	private String descricao;
 	private LocalDateTime data;
 	private boolean web;
-	@Transient
-	//TODO Criar o relacionamento Pedido/Solicitante
+
+	@OneToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name = "idSolicitante")
 	private Solicitante solicitante;
-	@Transient
-	//TODO Criar o relacionamento Pedido/Produto
+
+	@ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+	@JoinColumn(name = "idPedido")
 	private List<Produto> produtos;
 	
 	@Override
 	public String toString() {
 
-		return String.format("id (%d) - descricao (%s) - data (%s) - web (%s) - solicitante (%s) - produtos (%s)", 
-					id, descricao, data, web, solicitante, produtos  
+		return String.format("id (%d) - descricao (%s) - data (%s) - web (%s) - solicitante (%s) - produtos(%s)", 
+					id, descricao, data, web, solicitante, produtos
 				);
 	}
 
