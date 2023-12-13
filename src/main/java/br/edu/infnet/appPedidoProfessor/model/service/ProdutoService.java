@@ -21,4 +21,8 @@ public class ProdutoService {
 	public Collection<Produto> obterLista(){
 		return (Collection<Produto>) produtoRepository.findAll();
 	}
+
+	public void excluir(Integer id) {
+		produtoRepository.deleteById(id);
+	}
 }

@@ -10,7 +10,7 @@ import br.edu.infnet.appPedidoProfessor.model.repositories.SobremesaRepository;
 
 @Service
 public class SobremesaService {
-	
+
 	@Autowired
 	private SobremesaRepository sobremesaRepository;
 
@@ -22,5 +22,9 @@ public class SobremesaService {
 	public Collection<Sobremesa> obterLista() {
 
 		return (Collection<Sobremesa>) sobremesaRepository.findAll();
+	}
+
+	public void excluir(Integer id) {
+		sobremesaRepository.deleteById(id);
 	}
 }

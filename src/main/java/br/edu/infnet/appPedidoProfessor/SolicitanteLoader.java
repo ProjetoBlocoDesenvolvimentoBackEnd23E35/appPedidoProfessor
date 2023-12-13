@@ -9,7 +9,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.appPedidoProfessor.model.domain.Endereco;
 import br.edu.infnet.appPedidoProfessor.model.domain.Solicitante;
+import br.edu.infnet.appPedidoProfessor.model.service.EnderecoService;
 import br.edu.infnet.appPedidoProfessor.model.service.SolicitanteService;
 
 @Order(1)
@@ -36,6 +38,7 @@ public class SolicitanteLoader implements ApplicationRunner {
 			solicitante.setNome(campos[0]);
 			solicitante.setCpf(campos[1]);
 			solicitante.setEmail(campos[2]);
+			solicitante.setEndereco(new Endereco(campos[3]));
 			
 			solicitanteService.incluir(solicitante);
 			

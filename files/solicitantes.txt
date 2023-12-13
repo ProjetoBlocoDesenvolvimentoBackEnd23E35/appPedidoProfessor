@@ -1,4 +1,4 @@
-elberth moraes;12323434599;elberth@moraes.com
-huguinho;12312312312;hugo@hugo.com
-zezinho;23423423423;jose@jose.com
-luizinho;34534534534;luiz@luiz.com
+elberth moraes;12323434599;elberth@moraes.com;20010020
+huguinho;12312312312;hugo@hugo.com;20010020
+zezinho;23423423423;jose@jose.com;20010020
+luizinho;34534534534;luiz@luiz.com;20010020

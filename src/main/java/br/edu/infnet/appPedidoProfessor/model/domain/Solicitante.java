@@ -1,9 +1,12 @@
 package br.edu.infnet.appPedidoProfessor.model.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +20,10 @@ public class Solicitante {
 	private String nome;
 	private String cpf;
 	private String email;
+	
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "idEndereco")
+	private Endereco endereco;
 	
 	@Override
 	public String toString() {
@@ -69,5 +76,13 @@ public class Solicitante {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 }
